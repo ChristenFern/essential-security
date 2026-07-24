@@ -193,6 +193,14 @@ h1, h2, h3 { font-family: var(--disp); color: var(--espresso); line-height: 1.06
 .contact-card a { color: var(--cream-2); }
 .contact-card a:hover { color: var(--gold); }
 
+/* ---------- Section image + texte (Communes) ---------- */
+.split2 { display: grid; grid-template-columns: 1.02fr 0.98fr; gap: clamp(30px, 4vw, 60px); align-items: center; }
+.split2 .media { position: relative; }
+.split2 .media img { width: 100%; border: 1px solid var(--line); border-radius: 4px; box-shadow: var(--shadow-sm); aspect-ratio: 3/2; object-fit: cover; display: block; }
+.split2 .media .tag { position: absolute; left: -12px; bottom: -12px; background: var(--gold); color: var(--ink); font-weight: 700; font-size: 0.82rem; padding: 9px 15px; }
+.split2 blockquote { font-family: var(--disp); font-size: clamp(1.25rem,1.9vw,1.55rem); font-style: italic; color: var(--espresso); line-height: 1.35; border-left: 3px solid var(--gold); padding-left: 20px; margin: 18px 0 22px; }
+@media (max-width: 1000px) { .split2 { grid-template-columns: 1fr; } .split2 .media { order: -1; } }
+
 /* ---------- CTA band ---------- */
 .section-cta { padding-top: 0; }
 .cta-band { background: var(--terra); color: var(--cream-2); border-radius: 6px; padding: clamp(34px,4vw,54px); display: flex; align-items: center; justify-content: space-between; gap: 26px; flex-wrap: wrap; }
