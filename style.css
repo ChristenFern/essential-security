@@ -77,7 +77,7 @@ h1, h2, h3 { font-family: var(--disp); color: var(--espresso); line-height: 1.06
 /* ---------- Header ---------- */
 .site-header { position: sticky; top: 0; z-index: 100; background: rgba(244,228,210,.9); backdrop-filter: blur(12px); border-bottom: 1px solid var(--line); }
 .site-header .container { display: flex; align-items: center; justify-content: space-between; height: 82px; }
-.brand { display: inline-flex; align-items: center; gap: 13px; }
+.brand { display: inline-flex; align-items: center; gap: 13px; flex-shrink: 0; }
 .brand .logo-mark { height: 40px; width: auto; }
 .brand .logo-word { height: 21px; width: auto; }
 .main-nav { display: flex; align-items: center; gap: 34px; }
@@ -131,7 +131,7 @@ h1, h2, h3 { font-family: var(--disp); color: var(--espresso); line-height: 1.06
   background: var(--cream-2); border-radius: 200px 200px 8px 8px;
   aspect-ratio: 1/1.12; display: grid; place-items: center; overflow: hidden; margin-bottom: 20px;
 }
-.presta-arch img { width: 84%; height: 84%; object-fit: contain; transition: transform .5s ease; }
+.presta-arch img { width: 92%; height: 92%; object-fit: contain; transition: transform .5s ease; }
 .presta:hover .presta-arch img { transform: scale(1.06); }
 .presta h3 { font-size: 1.32rem; color: var(--cream-2); margin-bottom: 12px; font-weight: 600; }
 .presta ul { list-style: none; display: grid; gap: 7px; }
@@ -330,11 +330,23 @@ h1, h2, h3 { font-family: var(--disp); color: var(--espresso); line-height: 1.06
   .contact-grid { grid-template-columns: 1fr; }
   .footer-grid { grid-template-columns: 1fr 1fr; }
 }
-@media (max-width: 680px) {
-  .main-nav { position: fixed; inset: 82px 0 auto 0; flex-direction: column; align-items: flex-start; background: var(--cream); padding: 20px var(--pad); border-bottom: 1px solid var(--line); gap: 14px; transform: translateY(-130%); opacity: 0; transition: .3s; }
+/* plage 901-1150px : la nav desktop tenait sans marge, on resserre */
+@media (min-width: 901px) and (max-width: 1150px) {
+  .main-nav { gap: 20px; }
+  .main-nav a { font-size: 0.88rem; }
+  .header-cta { padding: 12px 17px; font-size: 0.88rem; }
+  .brand .logo-word { height: 19px; }
+}
+
+/* menu burger dès la tablette : à 768px la nav desktop écrasait le logo */
+@media (max-width: 900px) {
+  .main-nav { position: fixed; inset: 82px 0 auto 0; flex-direction: column; align-items: flex-start; background: var(--cream); padding: 20px var(--pad); border-bottom: 1px solid var(--line); gap: 14px; transform: translateY(-130%); opacity: 0; transition: .3s; z-index: 99; }
   .main-nav.is-open { transform: translateY(0); opacity: 1; }
   .nav-toggle { display: flex; }
   .header-cta { display: none; }
+}
+
+@media (max-width: 680px) {
   .prestations { grid-template-columns: 1fr; }
   .trustbar .container { flex-direction: column; align-items: flex-start; gap: 16px; }
   .form-row { grid-template-columns: 1fr; }
